@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casas de Vida · Guía Interactiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-oscuro:#14713f;
+    --verde:#1e9e50;
+    --verde-claro:#6cc24a;
+    --verde-suave:#e8f5ec;
+    --tinta:#2b2b2b;
+    --gris:#6b7280;
+    --blanco:#ffffff;
+    --sombra:0 4px 14px rgba(20,113,63,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--tinta);
+    background:#f4f7f4;
+    min-height:100vh;
+  }
+  /* ===== Cabecera estilo cartilla: franjas diagonales verdes ===== */
+  header{
+    position:relative;
+    background:var(--blanco);
+    padding:18px 20px 10px;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+  }
+  .franja{position:absolute;height:16px;left:0}
+  .franja.f1{top:0;width:55%;background:var(--verde-oscuro);clip-path:polygon(0 0,100% 0,92% 100%,0 100%)}
+  .franja.f2{top:0;width:30%;background:var(--verde-claro);clip-path:polygon(0 0,88% 0,78% 100%,0 100%);height:26px;opacity:.9}
+  .franja.f3{top:0;right:0;left:auto;width:38%;background:var(--verde-oscuro);clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}
+  .marca{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    padding-top:18px;
+  }
+  .logo-casa{
+    display:flex;flex-direction:column;align-items:center;line-height:1;
+  }
+  .logo-casa .casa-icon{font-size:26px}
+  .logo-casa .script{font-family:'Caveat',cursive;font-size:30px;color:#3d3d3d}
+  .logo-casa .sub{font-size:9px;letter-spacing:4px;font-weight:600;color:#3d3d3d}
+  .separador{width:1px;height:44px;background:#d1d5db}
+  .iglesia{font-size:10px;letter-spacing:2px;font-weight:700;color:#3d3d3d;text-align:center;line-height:1.5}
+  .iglesia .vara{font-family:'Caveat',cursive;font-size:24px;font-weight:600;display:block;letter-spacing:0}
+
+  main{max-width:680px;margin:0 auto;padding:20px 16px 120px}
+
+  /* ===== Portada del tema ===== */
+  .tema-head{display:flex;align-items:center;gap:6px;margin:14px 0 6px}
+  .tema-num{
+    font-size:88px;font-weight:800;color:var(--verde-oscuro);line-height:.9;
+    text-shadow:3px 3px 0 rgba(108,194,74,.35);
+  }
+  .tema-titulos .serie{font-size:13px;color:var(--tinta);font-weight:500}
+  .tema-titulos h1{font-size:26px;font-weight:300;color:var(--verde);letter-spacing:1px;line-height:1.1;text-transform:uppercase}
+  .tema-titulos h1 b{font-weight:700;display:block;letter-spacing:2px}
+
+  /* ===== Píldora de sección numerada (como la cartilla) ===== */
+  .pildora{
+    display:flex;align-items:center;margin:34px 0 18px;position:relative;
+  }
+  .pildora .num{
+    width:46px;height:46px;border-radius:50%;background:var(--blanco);
+    border:3px solid #111;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:20px;z-index:2;flex:none;
+  }
+  .pildora .barra{
+    margin-left:-20px;flex:1;background:linear-gradient(90deg,var(--verde-oscuro),var(--verde));
+    color:#fff;font-weight:700;font-size:18px;letter-spacing:1.5px;text-transform:uppercase;
+    padding:11px 16px 11px 34px;border-radius:14px;
+    box-shadow:4px 4px 0 #111;
+  }
+
+  .card{
+    background:var(--blanco);border-radius:16px;padding:20px;margin-bottom:14px;
+    box-shadow:var(--sombra);
+  }
+  .versiculo{
+    border-left:5px solid var(--verde-claro);
+    font-size:16.5px;line-height:1.65;font-weight:400;
+  }
+  .versiculo p{margin-bottom:10px}
+  .versiculo .vnum{color:var(--verde);font-weight:700;margin-right:4px}
+  .versiculo .ref{display:block;text-align:right;font-weight:800;letter-spacing:2px;color:var(--tinta);margin-top:6px}
+
+  .parrafo{font-size:15px;line-height:1.75;text-align:justify;margin-bottom:12px}
+  .subtitulo{
+    text-align:center;color:var(--verde);font-weight:700;letter-spacing:1px;
+    font-size:17px;margin:8px 0 16px;text-transform:uppercase;
+  }
+
+  /* ===== Acordeón de puntos ===== */
+  .punto{border:1.5px solid #e3e8e3;border-radius:14px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .punto summary{
+    list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:14px 16px;font-weight:700;font-size:14.5px;
+  }
+  .punto summary::-webkit-details-marker{display:none}
+  .punto summary .titulo-p{text-decoration:underline;text-underline-offset:3px}
+  .punto summary .refp{color:var(--gris);font-weight:600;font-size:13px;white-space:nowrap}
+  .punto[open]{border-color:var(--verde-claro);box-shadow:var(--sombra)}
+  .punto .cuerpo{padding:0 16px 16px}
+  .punto .flechita{color:var(--verde);transition:transform .2s;flex:none}
+  .punto[open] .flechita{transform:rotate(90deg)}
+
+  /* ===== Preguntas ===== */
+  .pregunta{margin-bottom:18px}
+  .pregunta label{font-weight:600;font-size:15px;display:block;margin-bottom:8px}
+  .pregunta label .qnum{color:var(--verde);font-weight:800}
+  .pregunta textarea{
+    width:100%;min-height:84px;border:1.5px solid #dfe5df;border-radius:12px;
+    padding:12px;font-family:'Poppins',sans-serif;font-size:14px;resize:vertical;
+    background:#fbfdfb;
+  }
+  .pregunta textarea:focus{outline:none;border-color:var(--verde-claro);box-shadow:0 0 0 3px rgba(108,194,74,.18)}
+  .guardado{font-size:12px;color:var(--verde);font-weight:600;height:16px;margin-top:4px;opacity:0;transition:opacity .3s}
+  .guardado.visible{opacity:1}
+
+  .accion-semana{
+    background:linear-gradient(135deg,var(--verde-oscuro),var(--verde));color:#fff;
+    border-radius:16px;padding:18px 20px;margin-top:8px;
+  }
+  .accion-semana h3{font-size:15px;letter-spacing:1px;margin-bottom:8px}
+  .accion-semana p{font-size:14px;line-height:1.7}
+  .check-accion{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;font-weight:600}
+  .check-accion input{width:20px;height:20px;accent-color:var(--verde-claro)}
+
+  /* ===== Reto: laberinto ===== */
+  .reto-instr{text-align:center;font-size:15px;font-weight:500;margin-bottom:14px}
+  #laberinto{display:block;margin:0 auto;border-radius:12px;touch-action:none;max-width:100%}
+  .dpad{display:grid;grid-template-columns:repeat(3,56px);gap:6px;justify-content:center;margin-top:16px}
+  .dpad button{
+    height:48px;border:none;border-radius:12px;background:var(--verde-suave);
+    color:var(--verde-oscuro);font-size:20px;font-weight:700;cursor:pointer;
+    box-shadow:0 2px 0 rgba(20,113,63,.25);
+  }
+  .dpad button:active{transform:translateY(2px);box-shadow:none}
+  .dpad .vacio{visibility:hidden}
+  .reto-win{
+    display:none;text-align:center;background:var(--verde-suave);border:2px dashed var(--verde);
+    border-radius:14px;padding:16px;margin-top:14px;font-weight:700;color:var(--verde-oscuro);font-size:16px;
+  }
+  .reto-win.visible{display:block;animation:pop .4s}
+  @keyframes pop{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
+  .btn-secundario{
+    display:inline-block;margin-top:10px;border:none;background:none;color:var(--verde);
+    font-weight:600;font-family:'Poppins',sans-serif;font-size:13px;cursor:pointer;text-decoration:underline;
+  }
+
+  /* ===== Anuncios ===== */
+  .anuncio{display:flex;gap:14px;align-items:flex-start}
+  .anuncio + .anuncio{margin-top:4px}
+  .anuncio .icono{font-size:26px;flex:none;margin-top:2px}
+  .anuncio h3{font-size:15px;color:var(--verde-oscuro)}
+  .anuncio p{font-size:13.5px;color:var(--gris);line-height:1.6}
+  .anuncio .destacado{color:#c0392b;font-weight:700}
+
+  /* ===== Navegación por pasos ===== */
+  .paso{display:none;animation:fade .35s}
+  .paso.activo{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  nav.pie{
+    position:fixed;bottom:0;left:0;right:0;background:var(--blanco);
+    box-shadow:0 -4px 16px rgba(0,0,0,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    z-index:50;
+  }
+  .pie-inner{max-width:680px;margin:0 auto}
+  .progreso{height:6px;background:#e5eae5;border-radius:99px;overflow:hidden;margin-bottom:10px}
+  .progreso .relleno{height:100%;background:linear-gradient(90deg,var(--verde),var(--verde-claro));width:0;transition:width .3s;border-radius:99px}
+  .pie-botones{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .pie-botones .etiqueta{font-size:12.5px;font-weight:600;color:var(--gris);text-align:center;flex:1}
+  .btn-nav{
+    border:none;border-radius:12px;padding:11px 22px;font-family:'Poppins',sans-serif;
+    font-weight:700;font-size:14px;cursor:pointer;
+  }
+  .btn-nav.sig{background:var(--verde-oscuro);color:#fff;box-shadow:0 3px 0 #0c4a28}
+  .btn-nav.sig:active{transform:translateY(2px);box-shadow:none}
+  .btn-nav.ant{background:var(--verde-suave);color:var(--verde-oscuro)}
+  .btn-nav:disabled{opacity:.35;cursor:default}
+
+  .portada-cta{text-align:center;margin-top:26px}
+  .btn-grande{
+    background:linear-gradient(135deg,var(--verde-oscuro),var(--verde));color:#fff;border:none;
+    border-radius:16px;padding:16px 34px;font-family:'Poppins',sans-serif;font-weight:700;
+    font-size:16px;letter-spacing:.5px;cursor:pointer;box-shadow:0 5px 0 #0c4a28;
+  }
+  .btn-grande:active{transform:translateY(3px);box-shadow:0 2px 0 #0c4a28}
+  .portada-meta{margin-top:14px;font-size:13px;color:var(--gris)}
+
+  footer.credito{text-align:center;font-size:12px;color:#9ca3af;margin-top:30px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="franja f1"></div>
+  <div class="franja f2"></div>
+  <div class="franja f3"></div>
+  <div class="marca">
+    <div class="logo-casa">
+      <span class="casa-icon">🏠</span>
+      <span class="script">Casas</span>
+      <span class="sub">DE VIDA</span>
+    </div>
+    <div class="separador"></div>
+    <div class="iglesia">
+      IGLESIA LA
+      <span class="vara">Vara de Dios</span>
+      <span style="font-size:7px;letter-spacing:1.5px">VISIÓN · AUTORIDAD · RESTAURACIÓN · ADORACIÓN</span>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<nav class="pie" id="pie" style="display:none">
+  <div class="pie-inner">
+    <div class="progreso"><div class="relleno" id="barra"></div></div>
+    <div class="pie-botones">
+      <button class="btn-nav ant" id="btnAnt">‹ Atrás</button>
+      <div class="etiqueta" id="etiquetaPaso"></div>
+      <button class="btn-nav sig" id="btnSig">Siguiente ›</button>
+    </div>
+  </div>
+</nav>
+
+<script>
+/* ==========================================================
+   CONTENIDO SEMANAL — cada semana se reemplaza este objeto
+   con el material del nuevo PDF de Casas de Vida.
+   ========================================================== */
+const TEMA = {
+  numero: 2,
+  serie: "Discipulado responsable en Familia",
+  tituloLinea1: "Llamados para",
+  tituloLinea2: "ganar uno más",
+  pasaje: {
+    ref: "JUAN 1:43-45",
+    versos: [
+      { n: 43, t: "El siguiente día quiso Jesús ir a Galilea, y halló a Felipe, y le dijo: Sígueme." },
+      { n: 44, t: "Y Felipe era de Betsaida, la ciudad de Andrés y Pedro." },
+      { n: 45, t: "Felipe halló a Natanael, y le dijo: Hemos hallado a aquel de quien escribió Moisés en la ley, así como los profetas: a Jesús, el hijo de José, de Nazaret." }
+    ]
+  },
+  intro: [
+    "Jesús durante su ministerio terrenal tenía claro su propósito de ganar Uno Más. Siempre que era increpado por los fariseos, él les recordaba que había venido para llamar a pecadores al arrepentimiento.",
+    "Interesante que Jesús entendía que su misión era Uno Más y no era el ser famoso o aceptado por la clase religiosa de su tiempo. Cuando Jesús llamó a Felipe, inmediatamente Felipe entendió que debía ganar Uno Más y buscó a Natanael. El llamado a ganar Uno Más es la esencia de nuestro ministerio en el Reino de Dios."
+  ],
+  subtituloPuntos: "¿Cómo convertirnos en ganadores de vidas?",
+  puntos: [
+    {
+      titulo: "1. Debemos ser seguidores verdaderos",
+      ref: "Juan 1:43",
+      texto: [
+        "Solo un seguidor de Jesús se puede convertir en un ganador de Uno Más. Muchos solo son simpatizantes del Señor, asistentes a templos, pero no son verdaderos seguidores de Jesús.",
+        "Jesús nos encontró para que fuéramos sus seguidores de vida y poder así ganar a otros para Él."
+      ]
+    },
+    {
+      titulo: "2. Debemos identificar al Natanael",
+      ref: "Juan 1:45",
+      texto: [
+        "Natanael para Felipe fue su círculo de influencia, la persona que él podía llevar a los pies de Jesús.",
+        "Todos nosotros tenemos círculos de influencia que son nuestra familia, amigos, compañeros de trabajo o estudio y los vecinos. La clave es identificar al Natanael que queremos ganar y llevarlo a los pies de Jesús."
+      ]
+    },
+    {
+      titulo: "3. Debemos hablar de Cristo",
+      ref: "Juan 1:45",
+      texto: [
+        "Felipe no solo identificó a Natanael como su candidato para llevarlo a Jesús, sino que le habló de Jesús. Felipe le presentó a Jesús desde la escritura y le enseñó que era el salvador esperado.",
+        "Necesitamos hablarle a la gente de Jesús como el salvador y Señor de sus vidas."
+      ]
+    },
+    {
+      titulo: "4. Debemos luchar en contra de los prejuicios",
+      ref: "Juan 1:46",
+      texto: [
+        "Felipe estaba muy entusiasmado de haberse encontrado con Jesús, pero cuando comparte el mensaje encontró resistencia en Natanael. Lo primero que le responde Natanael es «¡De Nazaret! ¿Acaso de allí puede salir algo bueno?». Natanael estaba ciego por sus propios prejuicios y favoritismo. No podía ver ni oír el entusiasmo de Felipe que quería compartir algo tan especial.",
+        "Mucha gente está ciega por tanto prejuicio y la única manera de vencerlos es que les mostremos el poder de Dios en nuestras vidas."
+      ]
+    }
+  ],
+  conclusion: [
+    "Ganamos uno más porque este fue el ministerio de Jesús y es nuestro llamado fundamental en el evangelismo. Jesús nos llamó de las tinieblas para que nos transformáramos en ganadores de uno más.",
+    "Para convertirnos en Ganadores necesitamos ser seguidores de Jesús, identificar a nuestros posibles Natanael, hablarles de Jesús y mostrarles a Jesús."
+  ],
+  preguntas: [
+    "¿Por qué deberíamos Ganar uno más para Cristo?",
+    "¿Cuáles pueden ser las razones por las que muchos creyentes no ganan vidas para Cristo?",
+    "¿Cómo nos podemos convertir en ganadores de vidas para Cristo?"
+  ],
+  accionSemana: "Buscaremos un amigo para compartirle de Jesús, llenaremos los Stickers de oración que entregarán los líderes de red y los llevaremos el Domingo a la Iglesia para iniciar un mes de oración por ellos.",
+  reto: {
+    instruccion: "Ayuda a Felipe y a Natanael a llegar a Jesús",
+    emojiJugador: "🚶",
+    emojiMeta: "✝️"
+  },
+  anuncios: [
+    { icono: "🔥", titulo: "Legado de Oración", detalle: "Conexión con Dios: lunes y viernes 8:30 PM por Zoom. Intercesión de la madrugada: martes, miércoles y jueves 5:30 AM por Zoom. <span class='destacado'>¡Nuevo horario!</span>" },
+    { icono: "⛪", titulo: "Servicios Dominicales", detalle: "Un tiempo para adorar, aprender y crecer juntos. 7:30 AM y 10:00 AM." },
+    { icono: "💧", titulo: "Bautizos — 12 de julio", detalle: "Inscripciones abiertas. Inscríbete con tu líder. ¡Da el siguiente paso en tu fe!" },
+    { icono: "⚡", titulo: "Club Legacy", detalle: "Para niños y jóvenes de 5 a 17 años. Sábado 27 de junio, 4:00 PM." },
+    { icono: "🎨", titulo: "Escuela Kids", detalle: "De 3 a 9 años, en los servicios de 7:30 AM y 10:00 AM." }
+  ]
+};
+/* ============ FIN DEL CONTENIDO SEMANAL ============ */
+
+const claveLS = `casaDeVida_tema${TEMA.numero}`;
+const guardar = (k,v)=>{ const d=JSON.parse(localStorage.getItem(claveLS)||"{}"); d[k]=v; localStorage.setItem(claveLS,JSON.stringify(d)); };
+const leer = k => (JSON.parse(localStorage.getItem(claveLS)||"{}"))[k];
+
+/* ===== Construcción de las secciones (pasos) ===== */
+const app = document.getElementById("app");
+
+function pildora(num, texto){
+  return `<div class="pildora"><div class="num">${num}</div><div class="barra">${texto}</div></div>`;
+}
+
+const pasos = [];
+
+/* Paso 0 — Portada */
+pasos.push({
+  etiqueta:"Portada",
+  html:`
+    <div class="tema-head">
+      <div class="tema-num">${TEMA.numero}</div>
+      <div class="tema-titulos">
+        <div class="serie">Serie: ${TEMA.serie}</div>
+        <h1>${TEMA.tituloLinea1}<b>${TEMA.tituloLinea2}</b></h1>
+      </div>
+    </div>
+    <div class="card versiculo">
+      ${TEMA.pasaje.versos.map(v=>`<p><span class="vnum">${v.n}</span>${v.t}</p>`).join("")}
+      <span class="ref">${TEMA.pasaje.ref}</span>
+    </div>
+    <div class="portada-cta">
+      <button class="btn-grande" onclick="irA(1)">Comenzar la reunión 🙏</button>
+      <div class="portada-meta">Guía interactiva · ${TEMA.serie}</div>
+    </div>`
+});
+
+/* Paso 1 — Aprendamos en Familia (enseñanza) */
+pasos.push({
+  etiqueta:"Aprendamos en Familia",
+  html:`
+    ${pildora(1,"Aprendamos en Familia")}
+    <div class="card">${TEMA.intro.map(p=>`<p class="parrafo">${p}</p>`).join("")}</div>
+    <div class="subtitulo">${TEMA.subtituloPuntos}</div>
+    ${TEMA.puntos.map((p,i)=>`
+      <details class="punto" ${i===0?"open":""}>
+        <summary>
+          <span class="flechita">➤</span>
+          <span class="titulo-p" style="flex:1">${p.titulo}</span>
+          <span class="refp">${p.ref}</span>
+        </summary>
+        <div class="cuerpo">${p.texto.map(t=>`<p class="parrafo">${t}</p>`).join("")}</div>
+      </details>`).join("")}
+    <div class="card" style="margin-top:18px">
+      <h3 style="text-decoration:underline;margin-bottom:10px;font-size:15px">CONCLUSIÓN:</h3>
+      ${TEMA.conclusion.map(p=>`<p class="parrafo">${p}</p>`).join("")}
+    </div>`
+});
+
+/* Paso 2 — Preguntas */
+pasos.push({
+  etiqueta:"Conversemos en Familia",
+  html:`
+    ${pildora(2,"Conversemos en Familia")}
+    <div class="card">
+      ${TEMA.preguntas.map((q,i)=>`
+        <div class="pregunta">
+          <label><span class="qnum">${i+1}.</span> ${q}</label>
+          <textarea data-q="${i}" placeholder="Escriban aquí su respuesta...">${leer("q"+i)||""}</textarea>
+          <div class="guardado" id="g${i}">✓ Guardado</div>
+        </div>`).join("")}
+    </div>
+    <div class="accion-semana">
+      <h3>📌 ACCIÓN DE LA SEMANA</h3>
+      <p>${TEMA.accionSemana}</p>
+      <label class="check-accion">
+        <input type="checkbox" id="chkAccion" ${leer("accion")?"checked":""}>
+        ¡Nos comprometemos esta semana!
+      </label>
+    </div>`
+});
+
+/* Paso 3 — Reto Familiar */
+pasos.push({
+  etiqueta:"Reto Familiar",
+  html:`
+    ${pildora(3,"Reto Familiar")}
+    <div class="card">
+      <p class="reto-instr">${TEMA.reto.instruccion}</p>
+      <canvas id="laberinto" width="450" height="450"></canvas>
+      <div class="dpad">
+        <span class="vacio"></span><button data-dir="up">▲</button><span class="vacio"></span>
+        <button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button>
+      </div>
+      <div class="reto-win" id="retoWin">🎉 ¡Llegaron a Jesús! ¡Reto completado en familia!</div>
+      <div style="text-align:center"><button class="btn-secundario" id="btnNuevoLab">↻ Nuevo laberinto</button></div>
+    </div>`
+});
+
+/* Paso 4 — Próximamente */
+pasos.push({
+  etiqueta:"Próximamente",
+  html:`
+    ${pildora(4,"Próximamente")}
+    ${TEMA.anuncios.map(a=>`
+      <div class="card anuncio">
+        <div class="icono">${a.icono}</div>
+        <div><h3>${a.titulo}</h3><p>${a.detalle}</p></div>
+      </div>`).join("")}
+    <div class="portada-cta">
+      <button class="btn-grande" onclick="irA(0)">Terminar la reunión 🙌</button>
+    </div>
+    <footer class="credito">Casas de Vida · Iglesia La Vara de Dios</footer>`
+});
+
+/* ===== Render y navegación ===== */
+app.innerHTML = pasos.map((p,i)=>`<section class="paso" id="paso${i}">${p.html}</section>`).join("");
+const pie = document.getElementById("pie");
+const barra = document.getElementById("barra");
+const btnAnt = document.getElementById("btnAnt");
+const btnSig = document.getElementById("btnSig");
+const etiquetaPaso = document.getElementById("etiquetaPaso");
+let actual = 0;
+
+function irA(i){
+  actual = Math.max(0, Math.min(pasos.length-1, i));
+  document.querySelectorAll(".paso").forEach((s,j)=>s.classList.toggle("activo", j===actual));
+  pie.style.display = actual===0 ? "none" : "block";
+  barra.style.width = (actual/(pasos.length-1)*100)+"%";
+  etiquetaPaso.textContent = pasos[actual].etiqueta + ` · ${actual}/${pasos.length-1}`;
+  btnAnt.disabled = actual<=0;
+  btnSig.disabled = actual>=pasos.length-1;
+  window.scrollTo({top:0, behavior:"smooth"});
+  if(actual===3) iniciarLaberinto();
+}
+btnAnt.onclick = ()=>irA(actual-1);
+btnSig.onclick = ()=>irA(actual+1);
+irA(0);
+
+/* Guardado de respuestas */
+document.querySelectorAll("textarea[data-q]").forEach(t=>{
+  let timer;
+  t.addEventListener("input", ()=>{
+    clearTimeout(timer);
+    timer = setTimeout(()=>{
+      guardar("q"+t.dataset.q, t.value);
+      const g = document.getElementById("g"+t.dataset.q);
+      g.classList.add("visible");
+      setTimeout(()=>g.classList.remove("visible"), 1600);
+    }, 500);
+  });
+});
+document.getElementById("chkAccion").addEventListener("change", e=>guardar("accion", e.target.checked));
+
+/* ===== Laberinto (se genera aleatorio: siempre tiene solución) ===== */
+const CELDAS = 15; // impar
+let lab, jugador, meta, ganado=false, labIniciado=false;
+
+function generarLaberinto(){
+  lab = Array.from({length:CELDAS},()=>Array(CELDAS).fill(1));
+  const dirs=[[0,-2],[0,2],[-2,0],[2,0]];
+  function tallar(x,y){
+    lab[y][x]=0;
+    const d=[...dirs].sort(()=>Math.random()-.5);
+    for(const [dx,dy] of d){
+      const nx=x+dx, ny=y+dy;
+      if(nx>0&&nx<CELDAS-1&&ny>0&&ny<CELDAS-1&&lab[ny][nx]===1){
+        lab[y+dy/2][x+dx/2]=0;
+        tallar(nx,ny);
+      }
+    }
+  }
+  tallar(1,CELDAS-2);
+  jugador={x:1,y:CELDAS-2};
+  meta={x:CELDAS-2,y:1};
+  ganado=false;
+  document.getElementById("retoWin").classList.remove("visible");
+}
+
+function dibujar(){
+  const cv=document.getElementById("laberinto");
+  if(!cv) return;
+  const ctx=cv.getContext("2d");
+  const t=cv.width/CELDAS;
+  ctx.fillStyle="#f2f7f2"; ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.fillStyle="#14713f";
+  for(let y=0;y<CELDAS;y++)for(let x=0;x<CELDAS;x++)
+    if(lab[y][x]===1) ctx.fillRect(x*t,y*t,t+0.5,t+0.5);
+  ctx.font=`${t*0.75}px serif`; ctx.textAlign="center"; ctx.textBaseline="middle";
+  ctx.fillText(TEMA.reto.emojiMeta, meta.x*t+t/2, meta.y*t+t/2);
+  ctx.fillText(TEMA.reto.emojiJugador, jugador.x*t+t/2, jugador.y*t+t/2);
+}
+
+function mover(dx,dy){
+  if(ganado) return;
+  const nx=jugador.x+dx, ny=jugador.y+dy;
+  if(nx<0||ny<0||nx>=CELDAS||ny>=CELDAS||lab[ny][nx]===1) return;
+  jugador={x:nx,y:ny};
+  dibujar();
+  if(nx===meta.x&&ny===meta.y){
+    ganado=true;
+    document.getElementById("retoWin").classList.add("visible");
+  }
+}
+
+function iniciarLaberinto(){
+  if(!labIniciado){
+    labIniciado=true;
+    generarLaberinto();
+    document.querySelectorAll(".dpad button").forEach(b=>{
+      b.addEventListener("click",()=>{
+        const d=b.dataset.dir;
+        mover(d==="left"?-1:d==="right"?1:0, d==="up"?-1:d==="down"?1:0);
+      });
+    });
+    document.getElementById("btnNuevoLab").addEventListener("click",()=>{generarLaberinto();dibujar();});
+    document.addEventListener("keydown",e=>{
+      if(actual!==3) return;
+      const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]};
+      if(m[e.key]){ e.preventDefault(); mover(...m[e.key]); }
+    });
+    /* deslizar en pantallas táctiles */
+    let sx,sy;
+    const cv=document.getElementById("laberinto");
+    cv.addEventListener("pointerdown",e=>{sx=e.clientX;sy=e.clientY;});
+    cv.addEventListener("pointerup",e=>{
+      const dx=e.clientX-sx, dy=e.clientY-sy;
+      if(Math.abs(dx)<12&&Math.abs(dy)<12) return;
+      if(Math.abs(dx)>Math.abs(dy)) mover(dx>0?1:-1,0); else mover(0,dy>0?1:-1);
+    });
+  }
+  dibujar();
+}
+</script>
+</body>
+</html>
