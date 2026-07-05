@@ -466,7 +466,7 @@ document.querySelectorAll("textarea[data-q]").forEach(t=>{
 document.getElementById("chkAccion").addEventListener("change", e=>guardar("accion", e.target.checked));
 
 /* ===== Laberinto (se genera aleatorio: siempre tiene solución) ===== */
-const CELDAS = 15; // impar
+const CELDAS = 21; // impar — a mayor número, más difícil el laberinto
 let lab, jugador, meta, ganado=false, labIniciado=false;
 
 function generarLaberinto(){
