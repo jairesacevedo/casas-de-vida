@@ -154,6 +154,25 @@
     font-weight:600;font-family:'Poppins',sans-serif;font-size:13px;cursor:pointer;text-decoration:underline;
   }
 
+  /* ===== Reto: sopa de letras ===== */
+  .sopa-palabras{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px}
+  .sopa-palabras span{
+    background:var(--verde-suave);color:var(--verde-oscuro);padding:4px 14px;
+    border-radius:99px;font-weight:700;font-size:13px;letter-spacing:1px;
+  }
+  .sopa-palabras span.tachada{text-decoration:line-through;opacity:.45}
+  .sopa-grid{
+    display:grid;gap:3px;max-width:440px;margin:0 auto;
+    user-select:none;-webkit-user-select:none;touch-action:none;
+  }
+  .sopa-grid .celda{
+    aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+    background:#f2f7f2;border-radius:7px;font-weight:600;
+    font-size:clamp(11px,3.2vw,17px);cursor:pointer;
+  }
+  .sopa-grid .celda.encontrada{background:var(--verde-oscuro);color:#fff}
+  .sopa-grid .celda.sel{background:var(--verde-claro);color:#fff}
+
   /* ===== Anuncios ===== */
   .anuncio{display:flex;gap:14px;align-items:flex-start}
   .anuncio + .anuncio{margin-top:4px}
@@ -238,77 +257,63 @@
    con el material del nuevo PDF de Casas de Vida.
    ========================================================== */
 const TEMA = {
-  numero: 2,
+  numero: 3,
   serie: "Discipulado responsable en Familia",
-  tituloLinea1: "Llamados para",
-  tituloLinea2: "ganar uno más",
+  tituloLinea1: "Ser discípulo es",
+  tituloLinea2: "hacer más que saber",
   pasaje: {
-    ref: "JUAN 1:43-45",
+    ref: "JUAN 13:13-17",
     versos: [
-      { n: 43, t: "El siguiente día quiso Jesús ir a Galilea, y halló a Felipe, y le dijo: Sígueme." },
-      { n: 44, t: "Y Felipe era de Betsaida, la ciudad de Andrés y Pedro." },
-      { n: 45, t: "Felipe halló a Natanael, y le dijo: Hemos hallado a aquel de quien escribió Moisés en la ley, así como los profetas: a Jesús, el hijo de José, de Nazaret." }
+      { n: 13, t: "Vosotros me llamáis Maestro, y Señor; y decís bien, porque lo soy." },
+      { n: 14, t: "Pues si yo, el Señor y el Maestro, he lavado vuestros pies, vosotros también debéis lavaros los pies los unos a los otros." },
+      { n: 15, t: "Porque ejemplo os he dado, para que como yo os he hecho, vosotros también hagáis." },
+      { n: 16, t: "De cierto, de cierto os digo: El siervo no es mayor que su señor, ni el enviado es mayor que el que le envió." },
+      { n: 17, t: "Si sabéis estas cosas, bienaventurados seréis si las hiciereis." }
     ]
   },
   intro: [
-    "Jesús durante su ministerio terrenal tenía claro su propósito de ganar Uno Más. Siempre que era increpado por los fariseos, él les recordaba que había venido para llamar a pecadores al arrepentimiento.",
-    "Interesante que Jesús entendía que su misión era Uno Más y no era el ser famoso o aceptado por la clase religiosa de su tiempo. Cuando Jesús llamó a Felipe, inmediatamente Felipe entendió que debía ganar Uno Más y buscó a Natanael. El llamado a ganar Uno Más es la esencia de nuestro ministerio en el Reino de Dios."
+    "Jesús demostró la importancia del discipulado al hacer del entrenamiento de los doce discípulos una prioridad durante su ministerio público en la tierra.",
+    "Jesús entrenó a sus discípulos para que ellos a su vez se multiplicaran en otros, fueran una extensión de su ministerio en la tierra. El discipulado es el mejor método para transformar el mundo para Dios. <b>La clave es que ser discípulo es hacer más que saber.</b>"
   ],
-  subtituloPuntos: "¿Cómo convertirnos en ganadores de vidas?",
+  subtituloPuntos: "Entendiendo ser discípulo",
   puntos: [
     {
-      titulo: "1. Debemos ser seguidores verdaderos",
-      ref: "Juan 1:43",
+      titulo: "1. Ser discípulo no es saber más que hacer",
+      ref: "Juan 13:13",
       texto: [
-        "Solo un seguidor de Jesús se puede convertir en un ganador de Uno Más. Muchos solo son simpatizantes del Señor, asistentes a templos, pero no son verdaderos seguidores de Jesús.",
-        "Jesús nos encontró para que fuéramos sus seguidores de vida y poder así ganar a otros para Él."
+        "Jesús resaltó lo que era, Señor y Maestro, pero esto no fue un impedimento para que él pudiera lavar los pies de sus discípulos.",
+        "La enseñanza de Jesús es que no importa lo que seamos, el discipulado siempre es más hacer que saber. Hay gente que necesita que le lavemos los pies por la suciedad del pecado."
       ]
     },
     {
-      titulo: "2. Debemos identificar al Natanael",
-      ref: "Juan 1:45",
+      titulo: "2. Ser discípulo actúa",
+      ref: "Juan 13:17",
       texto: [
-        "Natanael para Felipe fue su círculo de influencia, la persona que él podía llevar a los pies de Jesús.",
-        "Todos nosotros tenemos círculos de influencia que son nuestra familia, amigos, compañeros de trabajo o estudio y los vecinos. La clave es identificar al Natanael que queremos ganar y llevarlo a los pies de Jesús."
-      ]
-    },
-    {
-      titulo: "3. Debemos hablar de Cristo",
-      ref: "Juan 1:45",
-      texto: [
-        "Felipe no solo identificó a Natanael como su candidato para llevarlo a Jesús, sino que le habló de Jesús. Felipe le presentó a Jesús desde la escritura y le enseñó que era el salvador esperado.",
-        "Necesitamos hablarle a la gente de Jesús como el salvador y Señor de sus vidas."
-      ]
-    },
-    {
-      titulo: "4. Debemos luchar en contra de los prejuicios",
-      ref: "Juan 1:46",
-      texto: [
-        "Felipe estaba muy entusiasmado de haberse encontrado con Jesús, pero cuando comparte el mensaje encontró resistencia en Natanael. Lo primero que le responde Natanael es «¡De Nazaret! ¿Acaso de allí puede salir algo bueno?». Natanael estaba ciego por sus propios prejuicios y favoritismo. No podía ver ni oír el entusiasmo de Felipe que quería compartir algo tan especial.",
-        "Mucha gente está ciega por tanto prejuicio y la única manera de vencerlos es que les mostremos el poder de Dios en nuestras vidas."
+        "El gran mensaje de Jesús a través del lavamiento de los pies a los discípulos, es que debemos hacer más que saber. Muchos sabemos de Biblia y teología, pero no hacemos nada por otros, nos cuesta hacer discípulos.",
+        "Jesús NO quería que sus discípulos se convirtieran solamente en conocedores del Reino, sino que se transformaran en practicantes de la Palabra en el Reino. El saber es importante, pero se debe evidenciar en un hacer de amor y misericordia."
       ]
     }
   ],
   conclusion: [
-    "Ganamos uno más porque este fue el ministerio de Jesús y es nuestro llamado fundamental en el evangelismo. Jesús nos llamó de las tinieblas para que nos transformáramos en ganadores de uno más.",
-    "Para convertirnos en Ganadores necesitamos ser seguidores de Jesús, identificar a nuestros posibles Natanael, hablarles de Jesús y mostrarles a Jesús."
+    "El discipulado es importante porque fue una prioridad para Jesús y porque Jesús formó a sus discípulos para que ellos fueran multiplicadores de su visión.",
+    "Ser discípulo no es un puesto o status en la iglesia. Ser discípulo es servir a otros y es hacer más, que saber. Seremos bienaventurados cuando hagamos lo que sabemos."
   ],
   preguntas: [
-    "¿Por qué deberíamos Ganar uno más para Cristo?",
-    "¿Cuáles pueden ser las razones por las que muchos creyentes no ganan vidas para Cristo?",
-    "¿Cómo nos podemos convertir en ganadores de vidas para Cristo?"
+    "¿Cómo podemos nosotros lavar los pies en nuestra familia y los de otros?",
+    "¿Qué cualidades cree que Jesús mostró al lavar los pies de sus discípulos?",
+    "¿Qué necesitamos para ser más hacedores?"
   ],
-  accionSemana: "Buscaremos un amigo para compartirle de Jesús, llenaremos los Stickers de oración que entregarán los líderes de red y los llevaremos el Domingo a la Iglesia para iniciar un mes de oración por ellos.",
+  accionSemana: "Continuando con el mismo amigo al que le hablamos la semana pasada, vamos a conversar con él o ella y le preguntaremos si tiene una necesidad o petición por la cual quiere que oremos. De esta manera identificaremos si podemos hacer una obra para ayudarle en esa necesidad y el tema específico por el cual estaremos orando por él o ella.<br><br><em>Nota: no olvides llenar el Compromiso de Oración y llevarlo a la iglesia para que juntos intercedamos por tu amigo o amiga.</em>",
   reto: {
-    instruccion: "Ayuda a Felipe y a Natanael a llegar a Jesús",
-    emojiJugador: "🚶",
-    emojiMeta: "✝️"
+    tipo: "sopa",
+    instruccion: "Encuentra las palabras clave",
+    palabras: ["JESÚS", "PEDRO", "AMOR", "TOALLA", "LAVAR", "DISCÍPULOS"],
+    mensajeWin: "¡Encontraron todas las palabras! ¡Reto completado en familia!"
   },
   anuncios: [
-    { icono: "🔥", titulo: "Legado de Oración", detalle: "Conexión con Dios: lunes y viernes 8:30 PM por Zoom. Intercesión de la madrugada: martes, miércoles y jueves 5:30 AM por Zoom. <span class='destacado'>¡Nuevo horario!</span>" },
+    { icono: "🔥", titulo: "Legado de Oración", detalle: "Conexión con Dios: lunes y viernes 8:30 PM por Zoom. Intercesión de la madrugada: martes, miércoles y jueves 5:30 AM por Zoom." },
     { icono: "⛪", titulo: "Servicios Dominicales", detalle: "Un tiempo para adorar, aprender y crecer juntos. 7:30 AM y 10:00 AM." },
-    { icono: "💧", titulo: "Bautizos — 12 de julio", detalle: "Inscripciones abiertas. Inscríbete con tu líder. ¡Da el siguiente paso en tu fe!" },
-    { icono: "⚡", titulo: "Club Legacy", detalle: "Para niños y jóvenes de 5 a 17 años. Sábado 27 de junio, 4:00 PM." },
+    { icono: "💧", titulo: "Bautizos — 12 de julio", detalle: "<span class='destacado'>¡Este domingo!</span> Inscríbete con tu líder. ¡Da el siguiente paso en tu fe!" },
     { icono: "🎨", titulo: "Escuela Kids", detalle: "De 3 a 9 años, en los servicios de 7:30 AM y 10:00 AM." }
   ]
 };
@@ -393,21 +398,29 @@ pasos.push({
     </div>`
 });
 
-/* Paso 3 — Reto Familiar */
+/* Paso 3 — Reto Familiar (el tipo cambia según la cartilla de la semana) */
+function retoHTML(){
+  if(TEMA.reto.tipo === "sopa") return `
+    <p class="reto-instr">${TEMA.reto.instruccion}</p>
+    <div class="sopa-palabras" id="sopaPalabras"></div>
+    <div class="sopa-grid" id="sopa"></div>
+    <div class="reto-win" id="retoWin">🎉 ${TEMA.reto.mensajeWin}</div>
+    <div style="text-align:center"><button class="btn-secundario" id="btnNuevoReto">↻ Nuevo tablero</button></div>`;
+  return `
+    <p class="reto-instr">${TEMA.reto.instruccion}</p>
+    <canvas id="laberinto" width="450" height="450"></canvas>
+    <div class="dpad">
+      <span class="vacio"></span><button data-dir="up">▲</button><span class="vacio"></span>
+      <button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button>
+    </div>
+    <div class="reto-win" id="retoWin">🎉 ${TEMA.reto.mensajeWin}</div>
+    <div style="text-align:center"><button class="btn-secundario" id="btnNuevoReto">↻ Nuevo laberinto</button></div>`;
+}
 pasos.push({
   etiqueta:"Reto Familiar",
   html:`
     ${pildora(3,"Reto Familiar")}
-    <div class="card">
-      <p class="reto-instr">${TEMA.reto.instruccion}</p>
-      <canvas id="laberinto" width="450" height="450"></canvas>
-      <div class="dpad">
-        <span class="vacio"></span><button data-dir="up">▲</button><span class="vacio"></span>
-        <button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button>
-      </div>
-      <div class="reto-win" id="retoWin">🎉 ¡Llegaron a Jesús! ¡Reto completado en familia!</div>
-      <div style="text-align:center"><button class="btn-secundario" id="btnNuevoLab">↻ Nuevo laberinto</button></div>
-    </div>`
+    <div class="card">${retoHTML()}</div>`
 });
 
 /* Paso 4 — Próximamente */
@@ -444,7 +457,11 @@ function irA(i){
   btnAnt.disabled = actual<=0;
   btnSig.disabled = actual>=pasos.length-1;
   window.scrollTo({top:0, behavior:"smooth"});
-  if(actual===3) iniciarLaberinto();
+  if(actual===3) iniciarReto();
+}
+function iniciarReto(){
+  if(TEMA.reto.tipo === "sopa") iniciarSopa();
+  else iniciarLaberinto();
 }
 btnAnt.onclick = ()=>irA(actual-1);
 btnSig.onclick = ()=>irA(actual+1);
@@ -516,6 +533,111 @@ function mover(dx,dy){
   }
 }
 
+/* ===== Sopa de letras (se genera aleatoria con las palabras del tema) ===== */
+const SOPA_N = 11;
+const LETRAS_RELLENO = "ABCDEFGHIJLMNOPQRSTUVYZÁÉÍÓÚÑ";
+let sopaGrid, sopaEncontradas = new Set(), sopaIniciada = false;
+
+function colocarPalabra(palabra){
+  const letras = [...palabra];
+  const dirs = [[1,0],[0,1],[1,1],[1,-1]]; // [dc,dr]: →, ↓, ↘, ↗
+  for(let i=0; i<400; i++){
+    const [dc,dr] = dirs[Math.floor(Math.random()*dirs.length)];
+    const c0 = Math.floor(Math.random()*SOPA_N), r0 = Math.floor(Math.random()*SOPA_N);
+    const cf = c0+dc*(letras.length-1), rf = r0+dr*(letras.length-1);
+    if(cf<0||cf>=SOPA_N||rf<0||rf>=SOPA_N) continue;
+    let libre = true;
+    for(let j=0; j<letras.length; j++){
+      const v = sopaGrid[r0+dr*j][c0+dc*j];
+      if(v && v!==letras[j]){ libre=false; break; }
+    }
+    if(!libre) continue;
+    for(let j=0; j<letras.length; j++) sopaGrid[r0+dr*j][c0+dc*j] = letras[j];
+    return true;
+  }
+  return false;
+}
+
+function generarSopa(){
+  const palabras = [...TEMA.reto.palabras].sort((a,b)=>b.length-a.length);
+  for(let t=0; t<80; t++){
+    sopaGrid = Array.from({length:SOPA_N},()=>Array(SOPA_N).fill(""));
+    if(palabras.every(colocarPalabra)) break;
+  }
+  for(let r=0; r<SOPA_N; r++) for(let c=0; c<SOPA_N; c++)
+    if(!sopaGrid[r][c]) sopaGrid[r][c] = LETRAS_RELLENO[Math.floor(Math.random()*LETRAS_RELLENO.length)];
+  sopaEncontradas = new Set();
+}
+
+function dibujarSopa(){
+  const cont = document.getElementById("sopa");
+  cont.style.gridTemplateColumns = `repeat(${SOPA_N},1fr)`;
+  cont.innerHTML = sopaGrid.map((fila,r)=>
+    fila.map((l,c)=>`<div class="celda" data-r="${r}" data-c="${c}">${l}</div>`).join("")
+  ).join("");
+  document.getElementById("sopaPalabras").innerHTML =
+    TEMA.reto.palabras.map((p,i)=>`<span id="pal${i}">${p}</span>`).join("");
+  document.getElementById("retoWin").classList.remove("visible");
+}
+
+let selInicio = null, selCeldas = [];
+function celdaEn(x,y){
+  const el = document.elementFromPoint(x,y);
+  return el && el.classList && el.classList.contains("celda") ? el : null;
+}
+function lineaCeldas(a,b){
+  const r0=+a.dataset.r, c0=+a.dataset.c, r1=+b.dataset.r, c1=+b.dataset.c;
+  if(!(r0===r1 || c0===c1 || Math.abs(r1-r0)===Math.abs(c1-c0))) return null;
+  const dr=Math.sign(r1-r0), dc=Math.sign(c1-c0);
+  const len=Math.max(Math.abs(r1-r0),Math.abs(c1-c0))+1;
+  const celdas=[];
+  for(let j=0;j<len;j++){
+    const el=document.querySelector(`.celda[data-r="${r0+dr*j}"][data-c="${c0+dc*j}"]`);
+    if(!el) return null;
+    celdas.push(el);
+  }
+  return celdas;
+}
+function limpiarSel(){ selCeldas.forEach(el=>el.classList.remove("sel")); selCeldas=[]; }
+
+function iniciarSopa(){
+  if(sopaIniciada) return;
+  sopaIniciada = true;
+  generarSopa();
+  dibujarSopa();
+  const cont = document.getElementById("sopa");
+  cont.addEventListener("pointerdown", e=>{
+    const c = celdaEn(e.clientX,e.clientY);
+    if(!c) return;
+    e.preventDefault();
+    selInicio = c; limpiarSel(); selCeldas=[c]; c.classList.add("sel");
+    cont.setPointerCapture(e.pointerId);
+  });
+  cont.addEventListener("pointermove", e=>{
+    if(!selInicio) return;
+    const c = celdaEn(e.clientX,e.clientY);
+    if(!c) return;
+    const linea = lineaCeldas(selInicio,c);
+    if(!linea) return;
+    limpiarSel(); selCeldas=linea; linea.forEach(el=>el.classList.add("sel"));
+  });
+  cont.addEventListener("pointerup", ()=>{
+    if(!selInicio) return;
+    const txt = selCeldas.map(el=>el.textContent).join("");
+    const rev = [...txt].reverse().join("");
+    const idx = TEMA.reto.palabras.findIndex(p=>p===txt||p===rev);
+    if(idx>-1 && !sopaEncontradas.has(idx)){
+      sopaEncontradas.add(idx);
+      selCeldas.forEach(el=>el.classList.add("encontrada"));
+      document.getElementById("pal"+idx).classList.add("tachada");
+      if(sopaEncontradas.size===TEMA.reto.palabras.length)
+        document.getElementById("retoWin").classList.add("visible");
+    }
+    limpiarSel(); selInicio=null;
+  });
+  document.getElementById("btnNuevoReto").addEventListener("click", ()=>{ generarSopa(); dibujarSopa(); });
+}
+
 function iniciarLaberinto(){
   if(!labIniciado){
     labIniciado=true;
@@ -526,7 +648,7 @@ function iniciarLaberinto(){
         mover(d==="left"?-1:d==="right"?1:0, d==="up"?-1:d==="down"?1:0);
       });
     });
-    document.getElementById("btnNuevoLab").addEventListener("click",()=>{generarLaberinto();dibujar();});
+    document.getElementById("btnNuevoReto").addEventListener("click",()=>{generarLaberinto();dibujar();});
     document.addEventListener("keydown",e=>{
       if(actual!==3) return;
       const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]};
