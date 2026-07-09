@@ -14,11 +14,14 @@ Guía web interactiva para las reuniones semanales de Casas de Vida (Iglesia La 
 
 ## Actualización semanal
 
-Todo el contenido vive en el objeto `TEMA` al inicio del `<script>` de `index.html`. Cada semana:
+Todo el contenido vive en el objeto `TEMA` al inicio del `<script>` de `index.html`.
 
-1. Guardar el nuevo PDF en la carpeta `Iglesia`
-2. Pedirle a Claude: *"actualiza la guía de Casas de Vida con el nuevo PDF"*
-3. Claude reemplaza el objeto `TEMA` con el contenido nuevo y publica:
+**Para hacerlo tú mismo desde el navegador:** sigue el manual paso a paso en
+[COMO-ACTUALIZAR.md](COMO-ACTUALIZAR.md).
+
+**Para que lo haga Claude:** guarda el nuevo PDF en la carpeta `Iglesia` y pídele
+*"actualiza la guía de Casas de Vida con el nuevo PDF"*. Claude reemplaza el objeto
+`TEMA` con el contenido nuevo y publica:
    ```
    git add index.html
    git commit -m "Tema N: <título>"
