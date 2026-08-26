@@ -30,17 +30,25 @@ El bloque es un "formulario". Cambia solo lo que está **entre comillas** (y los
 | Campo | Qué va ahí (según el PDF) |
 |---|---|
 | `numero` | El número grande del tema (sin comillas: `numero: 4,`) |
+| `serie` | El nombre de la serie (ej. "La Casa es de Todos"), va debajo del número |
 | `tituloLinea1` y `tituloLinea2` | El título partido en dos renglones |
+| `etiquetas.paso1` / `etiquetas.paso2` | *Opcional.* Solo si esta semana la cartilla llama distinto a las secciones (ej. "Hablemos en Familia" en vez de "Aprendamos en Familia"). Si no lo pones, usa los nombres de siempre |
 | `pasaje.ref` | La cita, ej. `"JUAN 13:13-17"` |
-| `pasaje.versos` | Un renglón `{ n: 13, t: "texto..." },` por cada versículo |
-| `intro` | Los párrafos de "Aprendamos en Familia", uno por comillas |
+| `pasaje.versos` | Un renglón `{ n: 13, t: "texto..." },` por cada versículo. Si la cartilla trae una sola frase sin número, usa `{ n: "", t: "texto..." }` |
+| `intro` | Los párrafos de la enseñanza (paso 1), uno por comillas |
+| `preguntaReflexion` | *Opcional.* Si en medio de la enseñanza hay una pregunta destacada en un recuadro, va aquí |
 | `subtituloPuntos` | El subtítulo verde antes de los puntos |
 | `puntos` | Cada punto numerado con su título, cita y párrafos |
-| `conclusion` | Los párrafos de la conclusión |
-| `preguntas` | Las 3 preguntas |
+| `conclusion` | Los párrafos de la conclusión. Si el PDF no trae conclusión esta semana, déjalo como lista vacía: `conclusion: [],` — el bloque se oculta solo |
+| `preguntas` | Las 3 preguntas del paso 2 |
 | `accionSemana` | El texto de la Acción de la Semana |
+| `fraseDestacada` | *Opcional.* La frase resumen en letra grande que a veces trae la cartilla al final (tipo cita destacada) |
+| `oracion` | *Opcional.* Si la cartilla trae una oración de cierre, va aquí completa |
 | `reto` | Ver abajo según el tipo de reto |
 | `anuncios` | Los anuncios de "Próximamente" (si el PDF no trae, deja los vigentes y borra los de fechas pasadas) |
+
+Los campos marcados *Opcional* se pueden borrar por completo del objeto `TEMA`
+si esta semana no aplican (no hace falta dejarlos vacíos).
 
 ### El reto familiar
 
@@ -65,8 +73,19 @@ reto: {
 },
 ```
 
+**Si trae una lámina para colorear:**
+```js
+reto: {
+  tipo: "colorear",
+  instruccion: "Pinten juntos esta escena en familia"
+},
+```
+Este tipo muestra una ilustración propia (no es una copia exacta del dibujo del
+PDF, por derechos de autor) con una paleta de 10 colores para pintar tocando
+cada parte. Sirve para cualquier semana con reto de colorear, sin importar el tema.
+
 **Si trae otra cosa** (crucigrama, apareamiento…): pídele a Claude que cree el
-tipo nuevo — la página solo sabe hacer laberintos y sopas de letras.
+tipo nuevo — la página solo sabe hacer laberintos, sopas de letras y láminas para colorear.
 
 ### Las 5 reglas de oro (lo que evita que la página se rompa)
 
