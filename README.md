@@ -8,11 +8,12 @@ Guía web interactiva para las reuniones semanales de Casas de Vida (Iglesia La 
 ## Estructura (igual a la cartilla)
 
 1. **Portada** — número del tema, serie y pasaje bíblico
-2. **Aprendamos en Familia** — enseñanza con puntos desplegables
-3. **Conversemos en Familia** — preguntas con respuestas que se guardan en el dispositivo + Acción de la Semana
+2. **Aprendamos / Hablemos en Familia** — enseñanza con puntos desplegables
+3. **Conversemos en Familia / Reto de la Semana** — preguntas con respuestas que se guardan en el dispositivo + Acción de la Semana (a veces con frase destacada y oración de cierre)
 4. **Reto Familiar** — cambia según la cartilla de la semana:
    - 🌀 **Laberinto** jugable (flechas, botones o deslizar en pantalla táctil)
    - 🔤 **Sopa de letras** interactiva (arrastra el dedo sobre las palabras)
+   - 🎨 **Lámina para colorear** (ilustración propia con paleta de 10 colores)
 5. **Próximamente** — anuncios de la iglesia
 
 ## Actualización semanal
