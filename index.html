@@ -95,6 +95,22 @@
     text-align:center;color:var(--verde);font-weight:700;letter-spacing:1px;
     font-size:17px;margin:8px 0 16px;text-transform:uppercase;
   }
+  .reflexion{
+    background:var(--verde-suave);border:1.5px dashed var(--verde);border-radius:14px;
+    padding:16px 18px;margin:16px 0;
+  }
+  .reflexion p{font-size:14.5px;line-height:1.6;font-weight:600;color:var(--verde-oscuro);text-align:center}
+
+  .frase-destacada{
+    background:#fff;border-left:5px solid var(--verde-claro);border-radius:0 14px 14px 0;
+    padding:16px 18px;margin:16px 0;font-size:15px;line-height:1.6;font-weight:600;
+    color:var(--verde-oscuro);
+  }
+  .oracion{
+    background:var(--verde-suave);border-radius:16px;padding:18px 20px;margin-top:14px;
+  }
+  .oracion h3{font-size:15px;letter-spacing:1px;margin-bottom:8px;color:var(--verde-oscuro)}
+  .oracion p{font-size:14.5px;line-height:1.75;font-style:italic;color:var(--tinta)}
 
   /* ===== Acordeón de puntos ===== */
   .punto{border:1.5px solid #e3e8e3;border-radius:14px;margin-bottom:10px;overflow:hidden;background:#fff}
@@ -172,6 +188,16 @@
   }
   .sopa-grid .celda.encontrada{background:var(--verde-oscuro);color:#fff}
   .sopa-grid .celda.sel{background:var(--verde-claro);color:#fff}
+
+  /* ===== Reto: lámina para colorear ===== */
+  .paleta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px}
+  .paleta button{
+    width:34px;height:34px;border-radius:50%;border:3px solid transparent;cursor:pointer;padding:0;
+  }
+  .paleta button.activo{border-color:var(--tinta);transform:scale(1.12)}
+  #colorSvg{display:block;margin:0 auto;max-width:100%;height:auto;touch-action:manipulation}
+  #colorSvg .colorable{cursor:pointer;transition:fill .15s}
+  #colorSvg .colorable:hover{opacity:.85}
 
   /* ===== Anuncios ===== */
   .anuncio{display:flex;gap:14px;align-items:flex-start}
@@ -257,64 +283,71 @@
    con el material del nuevo PDF de Casas de Vida.
    ========================================================== */
 const TEMA = {
-  numero: 3,
-  serie: "Discipulado responsable en Familia",
-  tituloLinea1: "Ser discípulo es",
-  tituloLinea2: "hacer más que saber",
+  numero: 1,
+  serie: "La Casa es de Todos",
+  tituloLinea1: "Todos somos",
+  tituloLinea2: "responsables",
+  etiquetas: {
+    paso1: "Hablemos en Familia",
+    paso2: "Reto de la Semana"
+  },
   pasaje: {
-    ref: "JUAN 13:13-17",
+    ref: "GÁLATAS 6:5",
     versos: [
-      { n: 13, t: "Vosotros me llamáis Maestro, y Señor; y decís bien, porque lo soy." },
-      { n: 14, t: "Pues si yo, el Señor y el Maestro, he lavado vuestros pies, vosotros también debéis lavaros los pies los unos a los otros." },
-      { n: 15, t: "Porque ejemplo os he dado, para que como yo os he hecho, vosotros también hagáis." },
-      { n: 16, t: "De cierto, de cierto os digo: El siervo no es mayor que su señor, ni el enviado es mayor que el que le envió." },
-      { n: 17, t: "Si sabéis estas cosas, bienaventurados seréis si las hiciereis." }
+      { n: "", t: "“Porque cada uno llevará su propia carga”." }
     ]
   },
   intro: [
-    "Jesús demostró la importancia del discipulado al hacer del entrenamiento de los doce discípulos una prioridad durante su ministerio público en la tierra.",
-    "Jesús entrenó a sus discípulos para que ellos a su vez se multiplicaran en otros, fueran una extensión de su ministerio en la tierra. El discipulado es el mejor método para transformar el mundo para Dios. <b>La clave es que ser discípulo es hacer más que saber.</b>"
+    "Desde el principio, Dios enseñó que cada miembro de la familia tiene una función importante y que todos pueden aportar de acuerdo con su edad, capacidades y etapa de vida.",
+    "La verdad, ningún hogar puede mantenerse fuerte si una sola persona lleva toda la carga mientras los demás únicamente disfrutan de los beneficios. En Gálatas 6, el apóstol Pablo anima a los creyentes a ayudarse mutuamente, pero también les recuerda que cada uno debe asumir la responsabilidad que le corresponde.",
+    "Este equilibrio nos enseña que amar no significa hacer todo por los demás, sino formar personas responsables que aprendan a servir con disposición y fidelidad."
   ],
-  subtituloPuntos: "Entendiendo ser discípulo",
+  preguntaReflexion: "¿Qué hace cada uno de nosotros para ayudar en la casa? ¿Creemos que todos estamos colaborando por igual?",
+  subtituloPuntos: "¿Cómo podemos demostrar que todos somos responsables en nuestro hogar?",
   puntos: [
     {
-      titulo: "1. Ser discípulo no es saber más que hacer",
-      ref: "Juan 13:13",
+      titulo: "1. Entendiendo que cada uno tiene una responsabilidad",
+      ref: "Gálatas 6:5",
       texto: [
-        "Jesús resaltó lo que era, Señor y Maestro, pero esto no fue un impedimento para que él pudiera lavar los pies de sus discípulos.",
-        "La enseñanza de Jesús es que no importa lo que seamos, el discipulado siempre es más hacer que saber. Hay gente que necesita que le lavemos los pies por la suciedad del pecado."
+        "Dios ha dado a cada miembro de la familia capacidades y oportunidades diariamente para aportar al bienestar del hogar. Al comprender que todos tenemos una parte importante, dejamos de pensar que las tareas del hogar pertenecen únicamente a una persona y comenzamos a ver la casa como un proyecto que construimos juntos.",
+        "Una familia saludable entiende que la responsabilidad no depende de la edad, sino de la disposición del corazón y que cada aporte contribuye al bienestar de todos."
       ]
     },
     {
-      titulo: "2. Ser discípulo actúa",
-      ref: "Juan 13:17",
+      titulo: "2. Sirviendo con amor y no por obligación",
+      ref: "Colosenses 3:23",
       texto: [
-        "El gran mensaje de Jesús a través del lavamiento de los pies a los discípulos, es que debemos hacer más que saber. Muchos sabemos de Biblia y teología, pero no hacemos nada por otros, nos cuesta hacer discípulos.",
-        "Jesús NO quería que sus discípulos se convirtieran solamente en conocedores del Reino, sino que se transformaran en practicantes de la Palabra en el Reino. El saber es importante, pero se debe evidenciar en un hacer de amor y misericordia."
+        "Cumplir una responsabilidad puede hacerse de muchas maneras, pero Dios mira principalmente la actitud con la que lo hacemos. Por ello, servir en casa no debe convertirse en motivo de quejas, discusiones o comparaciones, sino en una expresión de amor hacia quienes viven con nosotros.",
+        "Una familia donde cada miembro sirve con buena disposición experimenta un ambiente de respeto, gratitud y cooperación."
+      ]
+    },
+    {
+      titulo: "3. Construyendo un hogar donde todos participan",
+      ref: "Eclesiastés 4:9",
+      texto: [
+        "Las familias más fuertes no son aquellas donde una sola persona hace todo, sino aquellas donde cada integrante aporta lo mejor de sí. Entonces, cuando todos participan, las cargas se vuelven más livianas y el hogar se convierte en un espacio donde cada uno se siente importante y valorado.",
+        "Dios quiere formar familias donde todos colaboren, porque esa es una manera práctica de vivir en el amor, unidad y servicio que Él nos enseña en su Palabra."
       ]
     }
   ],
-  conclusion: [
-    "El discipulado es importante porque fue una prioridad para Jesús y porque Jesús formó a sus discípulos para que ellos fueran multiplicadores de su visión.",
-    "Ser discípulo no es un puesto o status en la iglesia. Ser discípulo es servir a otros y es hacer más, que saber. Seremos bienaventurados cuando hagamos lo que sabemos."
-  ],
+  conclusion: [],
   preguntas: [
-    "¿Cómo podemos nosotros lavar los pies en nuestra familia y los de otros?",
-    "¿Qué cualidades cree que Jesús mostró al lavar los pies de sus discípulos?",
-    "¿Qué necesitamos para ser más hacedores?"
+    "¿Qué responsabilidad fue la más fácil de cumplir? ¿Cuál representó un mayor desafío?",
+    "¿Cómo cambió el ambiente de nuestro hogar cuando todos colaboramos?",
+    "¿Qué aprendimos acerca del servicio y la responsabilidad?"
   ],
-  accionSemana: "Continuando con el mismo amigo al que le hablamos la semana pasada, vamos a conversar con él o ella y le preguntaremos si tiene una necesidad o petición por la cual quiere que oremos. De esta manera identificaremos si podemos hacer una obra para ayudarle en esa necesidad y el tema específico por el cual estaremos orando por él o ella.<br><br><em>Nota: no olvides llenar el Compromiso de Oración y llevarlo a la iglesia para que juntos intercedamos por tu amigo o amiga.</em>",
+  accionSemana: "Elaboremos una lista sencilla con las responsabilidades de cada uno en el hogar, teniendo en cuenta la edad y las capacidades. La idea es que durante la semana, procuremos cumplirlas con alegría, sin necesidad de que alguien nos las esté recordando constantemente.<br><br><em>La próxima semana, antes de iniciar la Casa de Vida, vamos a dialogar y compartir sobre las 3 preguntas de arriba.</em>",
+  fraseDestacada: "“Cuando cada miembro de la familia asume con amor la responsabilidad que Dios le ha confiado, el hogar se fortalece y refleja el diseño de Dios para vivir en unidad.”",
+  oracion: "Señor, gracias por el regalo de nuestra familia. Hoy reconocemos que cada uno de nosotros tiene una responsabilidad importante dentro de nuestro hogar, y por eso te pedimos que nos ayudes a colaborar con alegría y amor, pero ante todo a valorar el esfuerzo de los demás. Forma en nosotros un corazón dispuesto para construir un hogar donde reine la unidad y el respeto, donde todo lo que hagamos refleje tu amor y honre tu nombre. En el nombre de Jesús. Amén.",
   reto: {
-    tipo: "sopa",
-    instruccion: "Encuentra las palabras clave",
-    palabras: ["JESÚS", "PEDRO", "AMOR", "TOALLA", "LAVAR", "DISCÍPULOS"],
-    mensajeWin: "¡Encontraron todas las palabras! ¡Reto completado en familia!"
+    tipo: "colorear",
+    instruccion: "Todos somos responsables — pinten juntos esta escena en familia"
   },
   anuncios: [
     { icono: "🔥", titulo: "Legado de Oración", detalle: "Conexión con Dios: lunes y viernes 8:30 PM por Zoom. Intercesión de la madrugada: martes, miércoles y jueves 5:30 AM por Zoom." },
     { icono: "⛪", titulo: "Servicios Dominicales", detalle: "Un tiempo para adorar, aprender y crecer juntos. 7:30 AM y 10:00 AM." },
-    { icono: "💧", titulo: "Bautizos — 12 de julio", detalle: "<span class='destacado'>¡Este domingo!</span> Inscríbete con tu líder. ¡Da el siguiente paso en tu fe!" },
-    { icono: "🎨", titulo: "Escuela Kids", detalle: "De 3 a 9 años, en los servicios de 7:30 AM y 10:00 AM." }
+    { icono: "🙏", titulo: "Ayuno Congregacional por las Naciones", detalle: "<span class='destacado'>Este domingo</span>, de 7:30 AM a 12:00 M. Oración e intercesión por Colombia, Venezuela y las naciones. Ven con la bandera o camiseta de tu país." },
+    { icono: "⚡", titulo: "Primer Encuentro Legacy — Cita con el Padre", detalle: "29 y 30 de agosto, para niños de 7 a 13 años. Inscríbete con tu líder o al 322 236 6037." }
   ]
 };
 /* ============ FIN DEL CONTENIDO SEMANAL ============ */
@@ -353,12 +386,15 @@ pasos.push({
     </div>`
 });
 
-/* Paso 1 — Aprendamos en Familia (enseñanza) */
+/* Paso 1 — Aprendamos/Hablemos en Familia (enseñanza) */
+const etiquetaPaso1 = (TEMA.etiquetas && TEMA.etiquetas.paso1) || "Aprendamos en Familia";
+const etiquetaPaso2 = (TEMA.etiquetas && TEMA.etiquetas.paso2) || "Conversemos en Familia";
 pasos.push({
-  etiqueta:"Aprendamos en Familia",
+  etiqueta: etiquetaPaso1,
   html:`
-    ${pildora(1,"Aprendamos en Familia")}
+    ${pildora(1, etiquetaPaso1)}
     <div class="card">${TEMA.intro.map(p=>`<p class="parrafo">${p}</p>`).join("")}</div>
+    ${TEMA.preguntaReflexion ? `<div class="reflexion"><p>${TEMA.preguntaReflexion}</p></div>` : ""}
     <div class="subtitulo">${TEMA.subtituloPuntos}</div>
     ${TEMA.puntos.map((p,i)=>`
       <details class="punto" ${i===0?"open":""}>
@@ -369,17 +405,18 @@ pasos.push({
         </summary>
         <div class="cuerpo">${p.texto.map(t=>`<p class="parrafo">${t}</p>`).join("")}</div>
       </details>`).join("")}
+    ${TEMA.conclusion && TEMA.conclusion.length ? `
     <div class="card" style="margin-top:18px">
       <h3 style="text-decoration:underline;margin-bottom:10px;font-size:15px">CONCLUSIÓN:</h3>
       ${TEMA.conclusion.map(p=>`<p class="parrafo">${p}</p>`).join("")}
-    </div>`
+    </div>` : ""}`
 });
 
 /* Paso 2 — Preguntas */
 pasos.push({
-  etiqueta:"Conversemos en Familia",
+  etiqueta: etiquetaPaso2,
   html:`
-    ${pildora(2,"Conversemos en Familia")}
+    ${pildora(2, etiquetaPaso2)}
     <div class="card">
       ${TEMA.preguntas.map((q,i)=>`
         <div class="pregunta">
@@ -395,10 +432,17 @@ pasos.push({
         <input type="checkbox" id="chkAccion" ${leer("accion")?"checked":""}>
         ¡Nos comprometemos esta semana!
       </label>
-    </div>`
+    </div>
+    ${TEMA.fraseDestacada ? `<div class="frase-destacada">${TEMA.fraseDestacada}</div>` : ""}
+    ${TEMA.oracion ? `
+    <div class="oracion">
+      <h3>🙏 ORACIÓN</h3>
+      <p>${TEMA.oracion}</p>
+    </div>` : ""}`
 });
 
 /* Paso 3 — Reto Familiar (el tipo cambia según la cartilla de la semana) */
+const PALETA_COLORES = ["#e24b4a","#ef9f27","#fac775","#639922","#1e9e50","#378add","#7f77dd","#d4537e","#5f5e5a","#2b2b2b"];
 function retoHTML(){
   if(TEMA.reto.tipo === "sopa") return `
     <p class="reto-instr">${TEMA.reto.instruccion}</p>
@@ -406,6 +450,13 @@ function retoHTML(){
     <div class="sopa-grid" id="sopa"></div>
     <div class="reto-win" id="retoWin">🎉 ${TEMA.reto.mensajeWin}</div>
     <div style="text-align:center"><button class="btn-secundario" id="btnNuevoReto">↻ Nuevo tablero</button></div>`;
+  if(TEMA.reto.tipo === "colorear") return `
+    <p class="reto-instr">${TEMA.reto.instruccion}</p>
+    <div class="paleta" id="paleta">
+      ${PALETA_COLORES.map((c,i)=>`<button data-color="${c}" style="background:${c}" aria-label="Color ${i+1}"></button>`).join("")}
+    </div>
+    ${svgColorear()}
+    <div style="text-align:center"><button class="btn-secundario" id="btnNuevoReto">↻ Borrar y empezar de nuevo</button></div>`;
   return `
     <p class="reto-instr">${TEMA.reto.instruccion}</p>
     <canvas id="laberinto" width="450" height="450"></canvas>
@@ -415,6 +466,35 @@ function retoHTML(){
     </div>
     <div class="reto-win" id="retoWin">🎉 ${TEMA.reto.mensajeWin}</div>
     <div style="text-align:center"><button class="btn-secundario" id="btnNuevoReto">↻ Nuevo laberinto</button></div>`;
+}
+
+function svgColorear(){
+  return `
+  <svg id="colorSvg" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+    <line x1="20" y1="392" x2="380" y2="392" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <rect id="ventana" class="colorable" x="268" y="38" width="100" height="80" rx="6" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <line x1="318" y1="38" x2="318" y2="118" stroke="#2b2b2b" stroke-width="3"/>
+    <line x1="268" y1="78" x2="368" y2="78" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="cortina-izq" class="colorable" d="M253,28 Q246,78 256,128 L270,128 Q262,78 268,28 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="cortina-der" class="colorable" d="M383,28 Q391,78 381,128 L367,128 Q375,78 369,28 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <ellipse id="alfombra" class="colorable" cx="150" cy="387" rx="112" ry="16" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <rect id="sofa-cuerpo" class="colorable" x="18" y="260" width="152" height="92" rx="18" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <rect id="sofa-cojin" class="colorable" x="30" y="245" width="128" height="34" rx="12" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <rect id="mesa" class="colorable" x="198" y="302" width="55" height="55" rx="6" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="maceta" class="colorable" d="M332,342 L292,342 L302,382 L322,382 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="hojas" class="colorable" d="M312,342 C282,332 272,302 292,282 C302,302 302,312 312,322 C322,302 342,292 352,302 C357,322 337,337 312,342 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="balde" class="colorable" d="M55,300 L72,300 L68,326 L59,326 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path d="M55,300 Q63,289 72,300" fill="none" stroke="#2b2b2b" stroke-width="2"/>
+    <circle cx="90" cy="215" r="15" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="persona3-cuerpo" class="colorable" d="M76,228 Q90,221 104,228 L110,306 Q90,317 70,306 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <circle cx="150" cy="198" r="18" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="persona1-cuerpo" class="colorable" d="M131,217 Q150,209 169,217 L179,322 Q150,336 121,322 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <line x1="169" y1="235" x2="196" y2="258" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <rect id="escoba-palo" class="colorable" x="211" y="128" width="6" height="132" rx="3" fill="#ffffff" stroke="#2b2b2b" stroke-width="2"/>
+    <path id="escoba-cerdas" class="colorable" d="M198,118 L230,118 L235,92 L193,92 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <circle cx="235" cy="211" r="15" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+    <path id="persona2-cuerpo" class="colorable" d="M220,226 Q235,219 250,226 L256,308 Q235,320 214,308 Z" fill="#ffffff" stroke="#2b2b2b" stroke-width="3"/>
+  </svg>`;
 }
 pasos.push({
   etiqueta:"Reto Familiar",
@@ -461,6 +541,7 @@ function irA(i){
 }
 function iniciarReto(){
   if(TEMA.reto.tipo === "sopa") iniciarSopa();
+  else if(TEMA.reto.tipo === "colorear") iniciarColorear();
   else iniciarLaberinto();
 }
 btnAnt.onclick = ()=>irA(actual-1);
@@ -636,6 +717,29 @@ function iniciarSopa(){
     limpiarSel(); selInicio=null;
   });
   document.getElementById("btnNuevoReto").addEventListener("click", ()=>{ generarSopa(); dibujarSopa(); });
+}
+
+/* ===== Colorear (lámina interactiva, libre, sin condición de victoria) ===== */
+let colorearIniciado = false, colorActivo = PALETA_COLORES[0];
+
+function iniciarColorear(){
+  if(colorearIniciado) return;
+  colorearIniciado = true;
+  const paleta = document.getElementById("paleta");
+  paleta.querySelectorAll("button").forEach((b,i)=>{
+    if(i===0) b.classList.add("activo");
+    b.addEventListener("click", ()=>{
+      colorActivo = b.dataset.color;
+      paleta.querySelectorAll("button").forEach(x=>x.classList.remove("activo"));
+      b.classList.add("activo");
+    });
+  });
+  document.getElementById("colorSvg").querySelectorAll(".colorable").forEach(el=>{
+    el.addEventListener("click", ()=>{ el.setAttribute("fill", colorActivo); });
+  });
+  document.getElementById("btnNuevoReto").addEventListener("click", ()=>{
+    document.getElementById("colorSvg").querySelectorAll(".colorable").forEach(el=>el.setAttribute("fill","#ffffff"));
+  });
 }
 
 function iniciarLaberinto(){
